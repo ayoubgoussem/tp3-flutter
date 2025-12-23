@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="tp3_flutter">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>tp3_flutter</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+  <script>
+    // Prevent form submission and Enter key navigation that causes page reload in Flutter Web
+    (function () {
+      // Prevent form submissions immediately
+      const preventFormSubmit = function (e) {
+        console.log('[FORM PREVENTION] Blocked form submission');
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      };
+
+      // Prevent Enter key from submitting forms
+      const preventEnterSubmit = function (e) {
+        if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+          const form = e.target.closest('form');
+          if (form) {
+            console.log('[ENTER PREVENTION] Blocked Enter key form submission');
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        }
+      };
+
+      // Add listeners immediately
+      document.addEventListener('submit', preventFormSubmit, true);
+      document.addEventListener('keydown', preventEnterSubmit, true);
+      document.addEventListener('keypress', preventEnterSubmit, true);
+
+      // Also add after DOM loads
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('[FORM PREVENTION] Listeners active');
+        document.addEventListener('submit', preventFormSubmit, true);
+        document.addEventListener('keydown', preventEnterSubmit, true);
+        document.addEventListener('keypress', preventEnterSubmit, true);
+      });
+    })();
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+
+</html>
